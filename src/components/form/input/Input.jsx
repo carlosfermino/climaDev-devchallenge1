@@ -9,6 +9,8 @@ const StyledInput = styled.input`
   color: #9C9C9C;
   font-weight: bold;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  box-sizing: border-box;
   //Obs: Utilizado no input mas não é uma boa pratica.
   /*width: 150%;
   z-index: 100;*/
