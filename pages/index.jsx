@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 import BackGroundImageWithChildren from "../src/components/layout/backgroundImageWithChildren/BackGroundImageWithChildren"
 import Logo from "../src/components/logo/Logo"
+import Input from "../src/components/form/input/Input"
 
 const StyledPageInicial = styled.div`
   background-color: ${props => props.theme.colors.white};
@@ -22,7 +23,7 @@ export default function HomePage () {
       <BackGroundImageWithChildren>
         <StyledPageInicial>
           <Logo showImage type='vertical' />
-          <input type="text" placeholder="Digite o nome da sua cidade" />
+          <Input type="text" placeholder="Digite o nome da sua cidade" />
         </StyledPageInicial>
       </BackGroundImageWithChildren>
   )
