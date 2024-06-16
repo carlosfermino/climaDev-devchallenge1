@@ -20,7 +20,15 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     background-color: ${props => props.theme.colors.white};
+    font-family: sans-serif;
   }
+
+/*
+  * {
+    box-sizing: border-box;
+  }
+*/
+
 `
  
 function MyApp({ Component, pageProps }) {
