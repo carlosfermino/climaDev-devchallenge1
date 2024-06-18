@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 const Img = styled.img`
-max-width: 250px;
-width: 70%;
+  max-width: 250px;
+  width: 70%;
 @media (max-width: 500px) {
   max-width: 200px;
 }
@@ -18,7 +18,7 @@ const VerticalText = styled.h1`
 `
 
 const HorizontalText = styled.h1`
-  font-size: 80px;
+  font-size: 40px;
 `
 
 const PrimaryColor = styled.span`
