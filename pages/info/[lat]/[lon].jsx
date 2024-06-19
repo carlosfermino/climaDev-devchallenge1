@@ -63,8 +63,6 @@ export default function InfoPage() {
     }     
   }, [lat, lon])
 
-  console.log(futureInfo)
-
   return (
     <>
       <Navbar /> 
@@ -103,9 +101,7 @@ export default function InfoPage() {
               feels={futureInfo?.list[1].main.feels_like}
               min={futureInfo?.list[1].main.temp_min}
               max={futureInfo?.list[1].main.temp_max}
-            />
-
-             
+            />  
           </InfoContainer>
         </Container>   
       </Body>
