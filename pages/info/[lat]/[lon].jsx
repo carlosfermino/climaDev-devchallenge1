@@ -43,16 +43,22 @@ export default function InfoPage() {
   //Obs: Simplificando Router com destructor
   /*getRouter.query.lat
     getRouter.query.lon*/
+    
   const { lat, lon } = getRouter.query
 
   const fetchCurrentInfo = async () => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_OWM_KEY}&units=metric&lang=pt_br`)
+
+    //1 - `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_OWM_KEY}&units=metric&lang=pt_br`
+
+    //2 - `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_OWM_KEY}&units=metric&lang=pt_br`
+
+    const response = await fetch(`/api/openweathermap?url=/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=pt_br`)
     const json = await response.json()
     setCurrentInfo(json)
   }
   
   const fetchFutureInfo = async () => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_OWM_KEY}&units=metric&lang=pt_br`)
+    const response = await fetch(`/api/openweathermap?url=/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=pt_br`)
     const json = await response.json()
     setFutureInfo(json)
   }
