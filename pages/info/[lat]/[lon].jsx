@@ -6,6 +6,8 @@ import Navbar from "../../../src/components/navbar/Navbar"
 import Container from "../../../src/components/layout/container/Container"
 import ClimaCard from "../../../src/components/climaCard/ClimaCard"
 import Footer from "../../../src/components/footer/Footer"
+import Loading from "../../../src/components/loading/Loading"
+
 
 
 const Body = styled.div`
@@ -39,6 +41,7 @@ export default function InfoPage() {
 
   const [currentInfo, setCurrentInfo] = useState()
   const [futureInfo, setFutureInfo] = useState()
+  const [loading, setLoading] = useState(false)
   const getRouter = useRouter()
   //Obs: Simplificando Router com destructor
   /*getRouter.query.lat
@@ -47,11 +50,11 @@ export default function InfoPage() {
   const { lat, lon } = getRouter.query
 
   const fetchCurrentInfo = async () => {
-
     //1 - `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_OWM_KEY}&units=metric&lang=pt_br`
-
+    
     //2 - `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_OWM_KEY}&units=metric&lang=pt_br`
-
+    
+    setLoading(true)
     const response = await fetch(`/api/openweathermap?url=/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=pt_br`)
     const json = await response.json()
     setCurrentInfo(json)
@@ -70,12 +73,15 @@ export default function InfoPage() {
     }     
   }, [lat, lon])
 
+  //if (!currentInfo) return <div>Carregando...teste</div>
+
   return (
     <>
       <Navbar /> 
       <Body>
         <Container>
           <Content>
+            <Loading loading={loading} />
             <Text>Previsão do tempo para</Text>
             <CityName>{currentInfo?.name}, {currentInfo?.sys.country}</CityName>
           </Content>
@@ -89,7 +95,6 @@ export default function InfoPage() {
               min={currentInfo?.main.temp_min}
               max={currentInfo?.main.temp_max}
             />
-          
             <ClimaCard
               title="Próximas 3 horas" 
               icon={futureInfo?.list[0].weather[0].icon}
